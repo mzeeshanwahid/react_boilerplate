@@ -1,16 +1,15 @@
-/**
- * Homepage selectors
- */
+import { createSelector } from "reselect";
+import { initialState } from "./reducer";
 
-import { createSelector } from 'reselect';
-import { initialState } from './reducer';
+const selectGlobal = state => state.todos || initialState;
 
-const selectHome = state => state.home || initialState;
-
-const makeSelectUsername = () =>
+const makeSelectTodos = () =>
   createSelector(
-    selectHome,
-    homeState => homeState.username,
+    selectGlobal,
+    globalState => globalState
   );
 
-export { selectHome, makeSelectUsername };
+export {
+  selectGlobal,
+  makeSelectTodos
+};
