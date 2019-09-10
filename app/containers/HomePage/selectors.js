@@ -1,15 +1,12 @@
-import { createSelector } from "reselect";
-import { initialState } from "./reducer";
+import { createSelector } from 'reselect';
+import { initialState } from './reducer';
 
-const selectGlobal = state => state.todos || initialState;
+const selectGlobal = state => state.home || initialState;
 
 const makeSelectTodos = () =>
   createSelector(
     selectGlobal,
-    globalState => globalState
+    globalState => globalState.todos,
   );
 
-export {
-  selectGlobal,
-  makeSelectTodos
-};
+export { makeSelectTodos };

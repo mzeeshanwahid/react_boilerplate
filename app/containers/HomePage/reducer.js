@@ -1,17 +1,19 @@
-import produce from "immer";
-import { GET_API_DATA } from "./constants";
+import produce from 'immer';
+import { GET_API_DATA } from './constants';
 
 export const initialState = {
-    todos: []
-}
+  todos: [],
+};
 
-const apiCallReducer = (state = initialState, action) => produce(state, (draft => {
+const apiCallReducer = (state = initialState, action) =>
+  produce(state, draft => {
     switch (action.type) {
-        case GET_API_DATA:
-            console.log("Inside Reducer", action.payload);
-            draft.todos = action.payload;            
+      case GET_API_DATA:
+        draft.todos = [...action.payload];
+        break;
+      default:
+        break;
     }
-    console.log("State from Reducer", initialState.todos);
-}));
+  });
 
 export default apiCallReducer;
